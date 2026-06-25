@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>HACKED BY AL KHAWA | Y7 LTRBYA W T3LIM</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Share+Tech+Mono&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #0a0a0a;
+            color: #ff2040;
+            font-family: 'Share Tech Mono', 'Courier New', monospace;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* ── Background video ── */
+        .bg-video-wrap {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+            background: #0a0a0a;
+        }
+
+        .bg-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.35) blur(1px);
+        }
+
+        .grid-bg {
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,32,64,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,32,64,0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .glitch-overlay {
+            position: fixed;
+            inset: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(255,32,64,0.025) 0px,
+                rgba(255,32,64,0.025) 1px,
+                transparent 1px,
+                transparent 5px
+            );
+            pointer-events: none;
+            z-index: 2;
+            animation: scanMove 10s linear infinite;
+        }
+        @keyframes scanMove {
+            from { transform: translateY(-100%); }
+            to   { transform: translateY(100%); }
+        }
+
+        .matrix-bg {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.12;
+        }
+
+        /* ── Main wrapper ── */
+        .wrapper {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 850px;
+            padding: 20px 20px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+        }
+
+        /* ── Top title ── */
+        .top-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 0.95rem;
+            letter-spacing: 4px;
+            color: #ff2040;
+            text-shadow: 0 0 12px #ff2040;
+            text-align: center;
+            animation: titleGlitch 4s infinite;
+        }
+        @keyframes titleGlitch {
+            0%,94%,100% { text-shadow: 0 0 12px #ff2040; }
+            95% { text-shadow: -3px 0 red, 3px 0 cyan; transform: skewX(-1deg); }
+            97% { text-shadow: 3px 0 red, -3px 0 cyan; transform: skewX(1deg); }
+        }
+
+        .badge {
+            display: inline-block;
+            background: #ff2040;
+            color: #000;
+            padding: 3px 14px;
+            font-size: 0.6rem;
+            letter-spacing: 3px;
+            font-weight: bold;
+            border-radius: 20px;
+            margin-top: 8px;
+        }
+
+        /* ── Avatars row ── */
+        .avatars-row {
+            display: flex;
+            gap: 60px;
+            align-items: flex-start;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .avatar-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .avatar-ring {
+            position: relative;
+            width: 120px;
+            height: 120px;
+        }
+
+        /* spinning ring */
+        .avatar-ring::before {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            border-radius: 50%;
+            border: 2px dashed rgba(255,32,64,0.5);
+            animation: spinRing 10s linear infinite;
+        }
+        /* pulse ring */
+        .avatar-ring::after {
+            content: '';
+            position: absolute;
+            inset: -14px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,32,64,0.18);
+            animation: pulseRing 3s ease-in-out infinite;
+        }
+        @keyframes spinRing  { to { transform: rotate(360deg); } }
+        @keyframes pulseRing {
+            0%,100% { transform: scale(1); opacity: 0.3; }
+            50%      { transform: scale(1.04); opacity: 0.8; }
+        }
+
+        .avatar-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #ff2040;
+            box-shadow: 0 0 25px rgba(255,32,64,0.5);
+            display: block;
+            position: relative;
+            z-index: 2;
+            animation: imgGlow 2.5s ease-in-out infinite;
+        }
+        @keyframes imgGlow {
+            0%,100% { box-shadow: 0 0 20px rgba(255,32,64,0.45); }
+            50%      { box-shadow: 0 0 40px rgba(255,32,64,0.85), 0 0 70px rgba(255,32,64,0.25); }
+        }
+
+        /* placeholder circle when no image */
+        .avatar-placeholder {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #ff2040;
+            box-shadow: 0 0 25px rgba(255,32,64,0.5);
+            background: #1a0f10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            position: relative;
+            z-index: 2;
+            animation: imgGlow 2.5s ease-in-out infinite;
+        }
+
+        .avatar-name {
+            font-family: 'Orbitron', monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: #ff2040;
+            text-shadow: 0 0 10px rgba(255,32,64,0.6);
+            text-align: center;
+        }
+
+        /* COSTA highlighted */
+        .avatar-card.main .avatar-name {
+            font-size: 0.95rem;
+            letter-spacing: 4px;
+            text-shadow: 0 0 18px #ff2040, 0 0 35px rgba(255,32,64,0.4);
+            animation: titleGlitch 3s infinite;
+        }
+        .avatar-card.main .avatar-img,
+        .avatar-card.main .avatar-ring::before {
+            border-color: #ff2040;
+            animation-duration: 7s;
+        }
+
+        /* ── Message / terminal box ── */
+        .message-box {
+            background: rgba(0,0,0,0.72);
+            border: 1px solid rgba(255,32,64,0.4);
+            border-left: 3px solid #ff2040;
+            border-radius: 8px;
+            padding: 10px 20px;
+            width: 100%;
+            max-width: 580px;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #ffc8c8;
+            text-align: center;
+        }
+        .message-box .line {
+            display: block;
+        }
+
+        /* ── Discord button ── */
+        .discord-btn {
+            display: inline-block;
+            border: 2px solid #ff2040;
+            border-radius: 40px;
+            padding: 10px 30px;
+            color: #ff2040;
+            text-decoration: none;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .discord-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: #ff2040;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+            z-index: -1;
+        }
+        .discord-btn:hover::before { transform: scaleX(1); }
+        .discord-btn:hover { color: #000; box-shadow: 0 0 30px #ff2040; }
+
+        /* ── Footer ── */
+        .footer {
+            font-size: 0.6rem;
+            color: #ffffff;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        /* ── Floating stats ── */
+        .floating-stats {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            font-size: 9px;
+            color: #ff2040;
+            font-family: monospace;
+            z-index: 20;
+            background: rgba(0,0,0,0.75);
+            padding: 5px 10px;
+            border-left: 2px solid #ff2040;
+            border-radius: 0 4px 4px 0;
+        }
+
+        @keyframes shakeEffect {
+            0%,100% { transform: translateX(0); }
+            25% { transform: translateX(-4px); }
+            75% { transform: translateX(4px); }
+        }
+        .shake { animation: shakeEffect 0.12s ease-in-out 0s 4; }
+
+        @media (max-width: 600px) {
+            .avatars-row { gap: 16px; }
+            .avatar-card { gap: 16px; }
+            .avatar-ring, .avatar-img, .avatar-placeholder { width: 90px; height: 90px; }
+            .avatar-name { font-size: 0.6rem; letter-spacing: 1.5px; }
+            .avatar-card.main .avatar-name { font-size: 0.75rem; }
+        }
+
+        /* ── Preloader style ── */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background: #030303;
+            z-index: 99999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Orbitron', 'Share Tech Mono', monospace;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .loader-content {
+            text-align: center;
+            width: 90%;
+            max-width: 450px;
+        }
+
+        .loader-glitch {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #ff2040;
+            text-shadow: 0 0 15px #ff2040;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 32, 64, 0.05);
+            border: 1px solid rgba(255, 32, 64, 0.25);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: #ff2040;
+            box-shadow: 0 0 15px #ff2040;
+            transition: width 4s linear;
+        }
+
+        .loader-terminal {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.9rem;
+            color: #ff9999;
+            height: 24px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Preloader / Intro Screen -->
+    <div id="preloader">
+        <div class="loader-content">
+            <div class="loader-glitch">> weting <span id="preloaderCursor">_</span></div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <div class="loader-terminal" id="loaderTerminal">CONNECT BY AL KHAWA</div>
+        </div>
+    </div>
+
+    <div class="bg-video-wrap" aria-hidden="true">
+        <video
+            class="bg-video"
+            id="bgVideo"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="auto"
+            src="ssstik.io_@the_keralite_gamer_1779474825770.mp4"
+        ></video>
+    </div>
+    <div class="grid-bg"></div>
+    <div class="glitch-overlay"></div>
+    <div class="matrix-bg" id="matrixCanvas"></div>
+    <div class="floating-stats" id="liveStats">🖥️ CONNECT TO COSTA BILAL TIKIYO</div>
+
+    <div class="wrapper" id="mainContainer">
+
+        <!-- Title -->
+        <div style="text-align:center;">
+            <div class="top-title">> BY AL KHAWA <span id="cursorTitle">_</span></div>
+        </div>
+
+        <!-- Avatars Row -->
+        <div class="avatars-row">
+
+            <!-- KONA -->
+            <div class="avatar-card">
+                <div class="avatar-ring">
+                    <img
+                        src="https://cdn.discordapp.com/attachments/1378733360138027198/1519799195601469570/download.jfif?ex=6a3edecc&is=6a3d8d4c&hm=2d02df02e36af6c5e604269f61791c86a8ce88fbfb5d6f0493278849cd1a3de5&"
+                        alt=" KONA "
+                        class="avatar-img"
+                        onerror="this.outerHTML='<div class=\'avatar-placeholder\'>⚔️</div>'"
+                    >
+                </div>
+                <div class="avatar-name" style="font-style:italic;">KONA</div>
+            </div>
+
+            <!-- COSTA (main / highlighted - center) -->
+            <div class="avatar-card main">
+                <div class="avatar-ring">
+                    <img
+                        src="https://i.imgur.com/vezgpnC.jpeg"
+                        alt="COSTA"
+                        class="avatar-img"
+                        onerror="this.outerHTML='<div class=\'avatar-placeholder\'>🎭</div>'"
+                    >
+                </div>
+                <div class="avatar-name">COSTA</div>
+            </div>
+
+            <!-- BILAL_21 -->
+            <div class="avatar-card">
+                <div class="avatar-ring">
+                    <img
+                        src="https://i.imgur.com/chunmP9.png"
+                        alt="BILAL_21"
+                        class="avatar-img"
+                        onerror="this.outerHTML='<div class=\'avatar-placeholder\'>🐺</div>'"
+                    >
+                </div>
+                <div class="avatar-name">💊 BILAL_21 🚀</div>
+            </div>
+
+            <!-- VORTEX -->
+            <div class="avatar-card">
+                <div class="avatar-ring">
+                    <img
+                        src="https://cdn.discordapp.com/avatars/1147831916272291880/f14d14e30bd943bd073763c641a42d38.png?size=1024"
+                        alt="VORTEX"
+                        class="avatar-img"
+                        onerror="this.outerHTML='<div class=\'avatar-placeholder\'>🐺</div>'"
+                    >
+                </div>
+                <div class="avatar-name"> VORTEX </div>
+            </div>
+
+        </div>
+
+        <!-- Message -->
+        <div class="message-box" id="terminalOutput">
+            <span class="line"> CONNECT BY AL KHAWA</span>
+            <span class="line"></span>
+        </div>
+
+        <!-- Discord button -->
+        <a href="https://discord.gg/dCa7wZj5" target="_blank" class="discord-btn" id="discordBtn">>> JOIN DISCORD <<</a>
+
+        <!-- Footer -->
+        <div class="footer">
+            <span id="timestamp"></span>
+        </div>
+
+    </div>
+
+    <audio id="bgMusic" preload="auto"></audio>
+
+    <script>
+    (function () {
+
+        /* ── Matrix rain ── */
+        const matrixDiv = document.getElementById('matrixCanvas');
+        const mc = document.createElement('canvas');
+        Object.assign(mc.style, { position:'fixed', top:'0', left:'0', width:'100%', height:'100%' });
+        matrixDiv.appendChild(mc);
+        const ctx = mc.getContext('2d');
+        let W, H, drops = [];
+        const chars = "01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホ";
+
+        function resize() {
+            W = mc.width  = window.innerWidth;
+            H = mc.height = window.innerHeight;
+            drops = Array.from({ length: Math.floor(W / 20) }, () => Math.floor(Math.random() * -H / 20));
+        }
+        function draw() {
+            ctx.fillStyle = 'rgba(0,0,0,0.04)';
+            ctx.fillRect(0, 0, W, H);
+            ctx.font = '14px monospace';
+            drops.forEach((y, i) => {
+                const ch = chars[Math.random() * chars.length | 0];
+                const px = i * 20, py = y * 20;
+                if (py > 0 && py < H) {
+                    ctx.fillStyle = `rgba(255,32,64,${Math.random() * 0.45 + 0.15})`;
+                    ctx.fillText(ch, px, py);
+                }
+                if (py > H && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            });
+            requestAnimationFrame(draw);
+        }
+        resize(); draw();
+        window.addEventListener('resize', resize);
+
+        /* ── Clock / stats ── */
+        const liveStats = document.getElementById('liveStats');
+        const tsSpan    = document.getElementById('timestamp');
+        function tick() {
+            const now = new Date();
+            tsSpan.textContent = `⚡ ${now.toLocaleString()} ⚡`;
+        }
+        tick(); setInterval(tick, 3000);
+        liveStats.innerHTML = `🖥️ CONNECT TO COSTA BILAL KONA VORTEX`;
+
+        /* ── Cursor blink ── */
+        const cur = document.getElementById('cursorTitle');
+        let show = true;
+        setInterval(() => { if (cur) cur.textContent = (show = !show) ? '_' : ' '; }, 500);
+
+        /* ── Shake ── */
+        const cont = document.getElementById('mainContainer');
+        setInterval(() => {
+            if (Math.random() > 0.88) {
+                cont.classList.add('shake');
+                setTimeout(() => cont.classList.remove('shake'), 350);
+            }
+        }, 4000);
+
+        /* ── Background music (starts at 1:29, no restart on preloader end) ── */
+        const bgMusic = document.getElementById('bgMusic');
+        const MUSIC_START = 89; /* 1:29 */
+        const musicSources = [
+            'bg-music.mp3',
+            '../../../Documents/INSTASAMKA - Отключаю телефон slowed + reverb_tiktok version Lyrics.mp3'
+        ];
+        let musicHasStarted = false;
+
+        const playMusicOnClick = () => {
+            if (bgMusic && bgMusic.paused) bgMusic.play().catch(() => {});
+            document.removeEventListener('click', playMusicOnClick);
+        };
+
+        function beginMusicOnce() {
+            if (!bgMusic || musicHasStarted) return;
+            musicHasStarted = true;
+            bgMusic.currentTime = MUSIC_START;
+            bgMusic.play().catch(() => document.addEventListener('click', playMusicOnClick));
+        }
+
+        function resumeMusicOnly() {
+            if (!bgMusic) return;
+            if (bgMusic.paused) bgMusic.play().catch(() => document.addEventListener('click', playMusicOnClick));
+        }
+
+        if (bgMusic) {
+            const loadMusic = (index) => {
+                if (index >= musicSources.length || musicHasStarted) return;
+                bgMusic.src = musicSources[index];
+                bgMusic.load();
+                bgMusic.oncanplay = () => {
+                    if (!musicHasStarted) beginMusicOnce();
+                    bgMusic.oncanplay = null;
+                };
+                bgMusic.onerror = () => loadMusic(index + 1);
+            };
+            bgMusic.addEventListener('ended', () => {
+                bgMusic.currentTime = MUSIC_START;
+                bgMusic.play().catch(() => {});
+            });
+            loadMusic(0);
+        }
+
+        /* ── Background video ── */
+        const bgVideo = document.getElementById('bgVideo');
+        if (bgVideo) {
+            bgVideo.muted = true;
+            const videoSources = [
+                'ssstik.io_@the_keralite_gamer_1779474825770.mp4',
+                'bg-video.mp4',
+                '../../../Documents/ssstik.io_@the_keralite_gamer_1779474825770.mp4'
+            ];
+            const tryPlay = () => bgVideo.play().catch(() => {});
+            const loadSource = (index) => {
+                if (index >= videoSources.length) return;
+                bgVideo.src = videoSources[index];
+                bgVideo.load();
+                bgVideo.oncanplay = () => { tryPlay(); bgVideo.oncanplay = null; };
+                bgVideo.onerror = () => loadSource(index + 1);
+            };
+            loadSource(0);
+            document.addEventListener('click', tryPlay, { once: true });
+        }
+
+        /* ── Preloader / Intro logic ── */
+        const preloader = document.getElementById('preloader');
+        const progressBar = document.getElementById('progressBar');
+        const loaderTerminal = document.getElementById('loaderTerminal');
+        const preloaderCursor = document.getElementById('preloaderCursor');
+
+        // Blinking cursor in loader
+        let plShow = true;
+        setInterval(() => { if (preloaderCursor) preloaderCursor.textContent = (plShow = !plShow) ? '_' : ' '; }, 500);
+
+        // Set static loader terminal text
+        if (loaderTerminal) loaderTerminal.textContent = "CONNECT BY AL KHAWA";
+
+        // Trigger progress bar fill
+        requestAnimationFrame(() => {
+            if (progressBar) progressBar.style.width = '100%';
+        });
+
+        // Hide preloader after 4 seconds
+        setTimeout(() => {
+            if (preloader) {
+                preloader.style.opacity = '0';
+                preloader.style.pointerEvents = 'none';
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 500);
+            }
+            if (bgVideo && bgVideo.paused) bgVideo.play().catch(() => {});
+            resumeMusicOnly();
+        }, 4000);
+
+        /* ── Discord button ── */
+        document.getElementById('discordBtn').addEventListener('click', e => {
+            e.preventDefault();
+            window.open('https://discord.gg/dCa7wZj5', '_blank');
+        });
+
+        console.log('%c[+] AL AKHWA SYSTEM ACTIVE [+]', 'color:#ff2040;font-size:14px;font-weight:bold');
+
+    })();
+    </script>
+</body>
+</html>
